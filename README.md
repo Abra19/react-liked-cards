@@ -13,7 +13,7 @@ There is also a filter button that shows only liked cards.
 * i18next
 * REST API
 
-### [Try the application]()
+### [Try the application](https://abra19.github.io/react-liked-cards/)
 
 ### To get started
 

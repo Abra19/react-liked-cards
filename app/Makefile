@@ -4,5 +4,8 @@ install:
 start:
 	npm start
 
+test:
+	npm test
+
 lint:
 	npx eslint .
