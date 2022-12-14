@@ -1,0 +1,25 @@
+{
+  "name": "react-liked-cards",
+  "version": "1.0.0",
+  "description": "SPA with liked cards",
+  "main": "./app/src/index.js",
+  "scripts": {
+    "build": "npm run build --prefix app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abra19/react-liked-cards.git"
+  },
+  "keywords": [
+    "cards",
+    "likes",
+    "filter"
+  ],
+  "author": "Elena Abrarova",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Abra19/react-liked-cards/issues"
+  },
+  "homepage": "https://github.com/Abra19/react-liked-cards#readme"
+}
