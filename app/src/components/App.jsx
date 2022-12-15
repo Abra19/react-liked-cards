@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 
 import Cards from './Cards.jsx';
 
-function App() {
+const App = () => {
   const { t } = useTranslation();
   const refShown = useRef(null);
   const refButton = useRef(null);
@@ -18,7 +18,7 @@ function App() {
       refShown.current.textContent = t('allCats');
       refButton.current.textContent = t('chooseLikedCats');
     }
-  }
+  };
 
   return (
     <div className="container w-100">
@@ -30,9 +30,9 @@ function App() {
           <p className="lead" ref={refShown}>{t('allCats')}</p>
         </div>
         <div className="col-12 col-md-6 align-items-center">
-          <Button 
+          <Button
             variant="secondary"
-            className="float-end"
+            className="float-end filter-button"
             onClick={handleClick}
             ref={refButton}
           >
@@ -42,9 +42,7 @@ function App() {
       </div>
       <Cards />
     </div>
-   
-    
   );
-}
+};
 
 export default App;

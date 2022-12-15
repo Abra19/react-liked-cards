@@ -1,6 +1,8 @@
 env:
   browser: true
   es2021: true
+  jest: true
+  jasmine: true
 
 extends:
   - airbnb

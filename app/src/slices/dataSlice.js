@@ -6,7 +6,8 @@ import fetchData from './fetchData.js';
 const channelsAdapter = createEntityAdapter();
 
 const initialState = {
-  cards: [],
+  data: [],
+  errMessage: null,
 };
 
 const dataSlice = createSlice({
@@ -18,7 +19,8 @@ const dataSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchData.fulfilled, (state, action) => {
-        state.cards = action.payload;
+        state.data = action.payload.data;
+        state.errMessage = action.payload.err;
       });
   },
 });

@@ -3,6 +3,6 @@ import dataReducer from './dataSlice.js';
 
 export default configureStore({
   reducer: {
-    cards: dataReducer,
+    cardData: dataReducer,
   },
 });

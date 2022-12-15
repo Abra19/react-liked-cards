@@ -5,7 +5,12 @@ start:
 	npm start
 
 test:
-	npm test
+	npm test -s
 
 lint:
 	npx eslint .
+
+deploy:
+	npm run deploy
+
+.PHONY: test
