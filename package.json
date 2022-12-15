@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npm run build --prefix app"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Abra19/react-liked-cards.git"
