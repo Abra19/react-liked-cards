@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/react-liked-cards/static/css/main.6d6c9c9e.css",
-    "main.js": "/react-liked-cards/static/js/main.7fe3b300.js",
+    "main.js": "/react-liked-cards/static/js/main.f3bfd960.js",
     "index.html": "/react-liked-cards/index.html",
     "main.6d6c9c9e.css.map": "/react-liked-cards/static/css/main.6d6c9c9e.css.map",
-    "main.7fe3b300.js.map": "/react-liked-cards/static/js/main.7fe3b300.js.map"
+    "main.f3bfd960.js.map": "/react-liked-cards/static/js/main.f3bfd960.js.map"
   },
   "entrypoints": [
     "static/css/main.6d6c9c9e.css",
-    "static/js/main.7fe3b300.js"
+    "static/js/main.f3bfd960.js"
   ]
 }
