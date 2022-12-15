@@ -19,13 +19,11 @@ const App = () => {
 
   const handleClick = (e) => {
     const text = refShown.current.textContent;
+    refShown.current.textContent = text === t('allCats') ? t('likedCats') : t('allCats');
+    e.target.textContent = text === t('allCats') ? t('chooseAllCats') : t('chooseLikedCats');
     if (text === t('allCats')) {
-      refShown.current.textContent = t('likedCats');
-      e.target.textContent = t('chooseAllCats');
       dispatch(showLiked());
     } else {
-      refShown.current.textContent = t('allCats');
-      e.target.textContent = t('chooseLikedCats');
       dispatch(showAll());
     }
   };
