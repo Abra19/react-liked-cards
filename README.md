@@ -9,9 +9,6 @@ There is also a filter button that shows only liked cards.
 ### Tech Stack:
 * React with hooks
 * Redux Toolkit
-* React-Bootstrap
-* i18next
-* REST API
 
 ### [Try the application](https://abra19.github.io/react-liked-cards/)
 
