@@ -7,7 +7,7 @@ SPA with a list of cards, with the ability to like or delete card.
 There is also a filter button that shows only liked cards.
 
 ### Tech Stack:
-* React with hooks
+* React
 * Redux Toolkit
 
 ### [Try the application](https://abra19.github.io/react-liked-cards/)

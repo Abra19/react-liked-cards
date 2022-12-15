@@ -1,9 +1,7 @@
 /* eslint-disable no-param-reassign */
-import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 import fetchData from './fetchData.js';
-
-const cardAdapter = createEntityAdapter();
 
 const initialState = {
   data: [],
@@ -17,11 +15,11 @@ const dataSlice = createSlice({
   name: 'cardData',
   initialState,
   reducers: {
-    likedCard: (state, action) => (
+    likedCard: (state, { payload }) => (
       {
         ...state,
         data: state.data
-          .map((card) => (card.id === action.payload ? { ...card, liked: !card.liked } : card)),
+          .map((card) => (card.id === payload ? { ...card, liked: !card.liked } : card)),
       }),
     showLiked: (state) => {
       state.unliked = [...state.data.filter((card) => !card.liked)];
@@ -29,13 +27,17 @@ const dataSlice = createSlice({
       state.show = true;
     },
     showAll: (state) => ({ ...state, data: [...state.data, ...state.unliked] }),
-    deleteCard: cardAdapter.removeOne,
+    deleteCard: (state, { payload }) => (
+      {
+        ...state,
+        data: state.data.filter((card) => card.id !== payload),
+      }),
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchData.fulfilled, (state, action) => {
-        state.data = action.payload.data;
-        state.errMessage = action.payload.err;
+      .addCase(fetchData.fulfilled, (state, { payload }) => {
+        state.data = payload.data;
+        state.errMessage = payload.err;
       });
   },
 });

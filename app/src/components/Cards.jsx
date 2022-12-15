@@ -5,7 +5,7 @@ import { Card, Button } from 'react-bootstrap';
 import { AiOutlineDelete } from 'react-icons/ai';
 
 import AiTwoOneLikeMy from './AITwoOneLikeMy.jsx';
-import { likedCard } from '../slices/dataSlice.js';
+import { likedCard, deleteCard } from '../slices/dataSlice.js';
 
 const Cards = () => {
   const { t } = useTranslation();
@@ -20,6 +20,10 @@ const Cards = () => {
 
   const handleLikeClick = (id) => {
     dispatch(likedCard(id));
+  };
+
+  const handleDeleteClick = (id) => {
+    dispatch(deleteCard(id));
   };
 
   if (errMessage !== 'sucsess' && errMessage !== null) {
@@ -53,7 +57,7 @@ const Cards = () => {
                 <Button variant="white" onClick={() => handleLikeClick(el.id)}>
                   <AiTwoOneLikeMy id={el.id} />
                 </Button>
-                <Button variant="white">
+                <Button variant="white" onClick={() => handleDeleteClick(el.id)}>
                   <AiOutlineDelete size={28} />
                 </Button>
               </div>
