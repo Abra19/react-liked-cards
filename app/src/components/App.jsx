@@ -1,22 +1,32 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'react-bootstrap';
 
 import Cards from './Cards.jsx';
+import fetchData from '../slices/fetchData.js';
+import { showLiked, showAll } from '../slices/dataSlice.js';
 
 const App = () => {
   const { t } = useTranslation();
-  const refShown = useRef(null);
-  const refButton = useRef(null);
 
-  const handleClick = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
+
+  const refShown = useRef(null);
+
+  const handleClick = (e) => {
     const text = refShown.current.textContent;
     if (text === t('allCats')) {
       refShown.current.textContent = t('likedCats');
-      refButton.current.textContent = t('chooseAllCats');
+      e.target.textContent = t('chooseAllCats');
+      dispatch(showLiked());
     } else {
       refShown.current.textContent = t('allCats');
-      refButton.current.textContent = t('chooseLikedCats');
+      e.target.textContent = t('chooseLikedCats');
+      dispatch(showAll());
     }
   };
 
@@ -34,7 +44,6 @@ const App = () => {
             variant="secondary"
             className="float-end filter-button"
             onClick={handleClick}
-            ref={refButton}
           >
             {t('chooseLikedCats')}
           </Button>

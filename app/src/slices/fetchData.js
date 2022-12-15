@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { uniqueId } from 'lodash';
 import routes from '../routes.js';
 
 const fetchData = createAsyncThunk(
@@ -11,7 +12,13 @@ const fetchData = createAsyncThunk(
       const texts = textResp.data.data;
       const imgs = imgResp.data;
       const data = imgs.reduce((acc, img, i) => [...acc,
-        { text: texts[i], img, liked: false }], []);
+        {
+          id: uniqueId(),
+          text: texts[i],
+          img,
+          liked: false,
+          deleted: false,
+        }], []);
       return {
         data,
         err: 'sucsess',

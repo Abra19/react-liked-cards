@@ -13,4 +13,7 @@ test:
 build:
 	npm run build
 
+deploy:
+	make -C app deploy
+
 .PHONY: test build

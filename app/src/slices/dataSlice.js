@@ -3,18 +3,33 @@ import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 
 import fetchData from './fetchData.js';
 
-const channelsAdapter = createEntityAdapter();
+const cardAdapter = createEntityAdapter();
 
 const initialState = {
   data: [],
+  unliked: [],
+  liked: [],
   errMessage: null,
+  show: false,
 };
 
 const dataSlice = createSlice({
   name: 'cardData',
   initialState,
   reducers: {
-    deleteCard: channelsAdapter.removeOne,
+    likedCard: (state, action) => (
+      {
+        ...state,
+        data: state.data
+          .map((card) => (card.id === action.payload ? { ...card, liked: !card.liked } : card)),
+      }),
+    showLiked: (state) => {
+      state.unliked = [...state.data.filter((card) => !card.liked)];
+      state.data = [...state.data.filter((card) => card.liked)];
+      state.show = true;
+    },
+    showAll: (state) => ({ ...state, data: [...state.data, ...state.unliked] }),
+    deleteCard: cardAdapter.removeOne,
   },
   extraReducers: (builder) => {
     builder
@@ -25,5 +40,10 @@ const dataSlice = createSlice({
   },
 });
 
-export const { deleteCard } = dataSlice.actions;
+export const {
+  likedCard,
+  showLiked,
+  showAll,
+  deleteCard,
+} = dataSlice.actions;
 export default dataSlice.reducer;
