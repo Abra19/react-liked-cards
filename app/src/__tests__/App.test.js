@@ -43,5 +43,4 @@ test('changes value when clicked filter button', async () => {
   expect(button.textContent).toBe('Показать понравившихся котов');
 });
 
-test('mark liked', () => {
-});
+test('mark liked', () => {});
