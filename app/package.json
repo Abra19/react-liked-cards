@@ -11,7 +11,6 @@
     "axios": "^1.2.1",
     "bootstrap": "^5.2.3",
     "i18next": "^22.4.5",
-    "jest-environment-jsdom": "^29.3.1",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
@@ -35,9 +34,9 @@
       "react-app/jest"
     ]
   },
-  "jest":{
+  "jest": {
     "testEnvironment": "jsdom"
-},
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -65,6 +64,7 @@
     "gh-pages": "^4.0.0",
     "jest": "^27.5.1",
     "jest-cli": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
     "sass": "^1.56.2"
   }
 }
