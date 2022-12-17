@@ -7,8 +7,15 @@ SPA with a list of cards, with the ability to like or delete card.
 There is also a filter button that shows only liked cards.
 
 ### Tech Stack:
-* React
-* Redux Toolkit
+* React / React Hooks
+* Redux / Redux Toolkit
+* Bootstrap
+* Axios
+* i18next
+
+### Source of information
+* https://meowfacts.herokuapp.com/
+* https://shibe.online
 
 ### [Try the application](https://abra19.github.io/react-liked-cards/)
 
@@ -17,3 +24,4 @@ There is also a filter button that shows only liked cards.
 1. Clone git repo: `git clone git@github.com:Abra19/react-liked-cards.git`
 2. Install packages: `make install`
 3. Start: `make start`
+4. Deploy: `make deploy`
