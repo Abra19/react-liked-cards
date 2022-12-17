@@ -1,3 +1,5 @@
+/* eslint-disable functional/no-let */
+
 import React from 'react';
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -5,10 +7,24 @@ import '@testing-library/jest-dom';
 import i18next from 'i18next';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import { Provider } from 'react-redux';
+import { unmountComponentAtNode } from 'react-dom';
 
 import App from '../components/App.jsx';
 import resources from '../locales/index.js';
 import store from '../slices/index.js';
+
+let container = null;
+
+beforeEach(() => {
+  container = document.createElement('div');
+  document.body.appendChild(container);
+});
+
+afterEach(() => {
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
 
 const i18n = i18next.createInstance();
 
@@ -26,8 +42,8 @@ const renderApp = () => (
       <Provider store={store}>
         <App />
       </Provider>
-    </I18nextProvider>
-    ,
+    </I18nextProvider>,
+    container,
   )
 );
 
@@ -43,5 +59,7 @@ test('changes value when clicked filter button', async () => {
   expect(button.textContent).toBe('Показать понравившихся котов');
 });
 
-test('mark liked', () => {
-});
+/*
+тесты для reacta пока писать не умею - но попыталась настроить и войти в тему - поняла,
+что надо подтягивать теоретическую базу
+*/

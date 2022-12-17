@@ -63,7 +63,7 @@ const Cards = () => {
                 {el.text}
               </Card.Text>
               <div className="p-3 d-flex justify-content-between align-items-end">
-                <Button variant="white" onClick={() => handleLikeClick(el.id)}>
+                <Button variant="white" onClick={() => handleLikeClick(el.id)} data-testid={el.id}>
                   <AiTwoOneLikeMy id={el.id} />
                 </Button>
                 <Button variant="white" onClick={() => handleDeleteClick(el.id)}>
