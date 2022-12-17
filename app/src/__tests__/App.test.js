@@ -42,3 +42,5 @@ test('changes value when clicked filter button', async () => {
   await userEvent.click(screen.getByRole('button'));
   expect(button.textContent).toBe('Показать понравившихся котов');
 });
+
+test('mark liked', () => {});
