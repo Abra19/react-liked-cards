@@ -13,7 +13,7 @@ There is also a filter button that shows only liked cards.
 * Axios
 * i18next
 
-### Source of information
+### Sources of information
 * https://meowfacts.herokuapp.com/
 * https://shibe.online
 

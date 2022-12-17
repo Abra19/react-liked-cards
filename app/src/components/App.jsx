@@ -49,6 +49,7 @@ const App = () => {
             variant="secondary"
             className="filter-button btnBackg"
             onClick={handleClick}
+            role="button"
           >
             {t('chooseLikedCats')}
           </Button>

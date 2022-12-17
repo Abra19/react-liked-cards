@@ -35,6 +35,9 @@
       "react-app/jest"
     ]
   },
+  "jest":{
+    "testEnvironment": "jsdom"
+},
   "browserslist": {
     "production": [
       ">0.2%",
