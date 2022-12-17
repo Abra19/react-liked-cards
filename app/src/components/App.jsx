@@ -1,9 +1,15 @@
 import React, { useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { Button } from 'react-bootstrap';
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+} from 'react-bootstrap';
 
 import Cards from './Cards.jsx';
+import ModalOnRemove from './modal/ModalOnRemove.jsx';
 import fetchData from '../slices/fetchData.js';
 import { showLiked, showAll } from '../slices/dataSlice.js';
 
@@ -29,26 +35,27 @@ const App = () => {
   };
 
   return (
-    <div className="container w-100">
-      <div className="row">
-        <h2 className="display-4 text-center m-2 m-md-5 mb-5">{t('title')}</h2>
-      </div>
-      <div className="row mb-5">
-        <div className="col-12 col-md-6 text-left">
+    <Container>
+      <ModalOnRemove />
+      <Row>
+        <h2 className="display-4 text-center m-2 m-md-5">{t('title')}</h2>
+      </Row>
+      <Row className="mb-5">
+        <Col xs={12} md={6} className="text-center">
           <p className="lead" ref={refShown}>{t('allCats')}</p>
-        </div>
-        <div className="col-12 col-md-6 align-items-center">
+        </Col>
+        <Col xs={12} md={6} className="text-center align-items-center">
           <Button
             variant="secondary"
-            className="float-end filter-button"
+            className="filter-button btnBackg"
             onClick={handleClick}
           >
             {t('chooseLikedCats')}
           </Button>
-        </div>
-      </div>
+        </Col>
+      </Row>
       <Cards />
-    </div>
+    </Container>
   );
 };
 

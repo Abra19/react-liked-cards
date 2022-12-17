@@ -1,11 +1,17 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { Card, Button } from 'react-bootstrap';
+import {
+  Row,
+  Col,
+  Card,
+  Button,
+} from 'react-bootstrap';
 import { AiOutlineDelete } from 'react-icons/ai';
 
 import AiTwoOneLikeMy from './AITwoOneLikeMy.jsx';
-import { likedCard, deleteCard } from '../slices/dataSlice.js';
+import { likedCard } from '../slices/dataSlice.js';
+import { openModal } from '../slices/modalSlice.js';
 
 const Cards = () => {
   const { t } = useTranslation();
@@ -13,7 +19,8 @@ const Cards = () => {
   const {
     data,
     errMessage,
-    show,
+    isLoaded,
+    filter,
   } = useSelector((state) => state.cardData);
 
   const dispatch = useDispatch();
@@ -23,7 +30,7 @@ const Cards = () => {
   };
 
   const handleDeleteClick = (id) => {
-    dispatch(deleteCard(id));
+    dispatch(openModal(id));
   };
 
   if (errMessage !== 'sucsess' && errMessage !== null) {
@@ -34,16 +41,18 @@ const Cards = () => {
     );
   }
 
-  if (data.length === 0 && !show) {
+  if (data.length === 0 && !isLoaded) {
     return (
       <div>{t('waitDatas')}</div>
     );
   }
 
+  const showedData = filter === 'liked' ? data.slice(0).filter((el) => el.isLiked) : data.slice(0);
+
   return (
-    <div className="row mx-auto my-5">
-      {data.filter((el) => !el.deleted).map((el) => (
-        <div className="col-12 col-md-6 col-lg-4 col-xxl-3 my-5" key={el.id}>
+    <Row className="mx-auto my-5">
+      {showedData.filter((el) => !el.deleted).map((el) => (
+        <Col xs={12} md={6} lg={4} xxl={3} className="my-3 mx-auto" key={el.id}>
           <Card style={{ width: '300px', height: '650px' }} className="my-3 mx-auto">
             <Card.Img variant="top" src={el.img} className="rounded covered mx-auto py-2" />
             <Card.Body style={{ height: '350px' }}>
@@ -58,14 +67,14 @@ const Cards = () => {
                   <AiTwoOneLikeMy id={el.id} />
                 </Button>
                 <Button variant="white" onClick={() => handleDeleteClick(el.id)}>
-                  <AiOutlineDelete size={28} />
+                  <AiOutlineDelete size={28} fill="darkolivegreen" />
                 </Button>
               </div>
             </Card.Body>
           </Card>
-        </div>
+        </Col>
       ))}
-    </div>
+    </Row>
   );
 };
 

@@ -5,10 +5,9 @@ import fetchData from './fetchData.js';
 
 const initialState = {
   data: [],
-  unliked: [],
-  liked: [],
   errMessage: null,
-  show: false,
+  isLoaded: false,
+  filter: 'all',
 };
 
 const dataSlice = createSlice({
@@ -19,14 +18,16 @@ const dataSlice = createSlice({
       {
         ...state,
         data: state.data
-          .map((card) => (card.id === payload ? { ...card, liked: !card.liked } : card)),
+          .map((card) => (card.id === payload ? { ...card, isLiked: !card.isLiked } : card)),
       }),
     showLiked: (state) => {
-      state.unliked = [...state.data.filter((card) => !card.liked)];
-      state.data = [...state.data.filter((card) => card.liked)];
-      state.show = true;
+      state.filter = 'liked';
+      state.isLoaded = true;
     },
-    showAll: (state) => ({ ...state, data: [...state.data, ...state.unliked] }),
+    showAll: (state) => {
+      state.filter = 'all';
+      state.isLoaded = true;
+    },
     deleteCard: (state, { payload }) => (
       {
         ...state,
@@ -37,6 +38,9 @@ const dataSlice = createSlice({
     builder
       .addCase(fetchData.fulfilled, (state, { payload }) => {
         state.data = payload.data;
+        state.errMessage = payload.err;
+      })
+      .addCase(fetchData.rejected, (state, { payload }) => {
         state.errMessage = payload.err;
       });
   },

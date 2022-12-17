@@ -7,6 +7,9 @@ const ruResources = {
     chooseLikedCats: 'Показать понравившихся котов',
     waitDatas: 'Идет загрузка данных',
     noConnection: 'Извините, данные недоступны!',
+    deleteQuestion: 'Вы действительно хотите удалить данную карточку?',
+    delete: 'Удалить',
+    cancel: 'Отменить',
   },
 };
 

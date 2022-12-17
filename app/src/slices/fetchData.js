@@ -16,8 +16,7 @@ const fetchData = createAsyncThunk(
           id: uniqueId(),
           text: texts[i],
           img,
-          liked: false,
-          deleted: false,
+          isLiked: false,
         }], []);
       return {
         data,
