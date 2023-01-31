@@ -42,7 +42,7 @@ const App = () => {
       </Row>
       <Row className="mb-5">
         <Col xs={12} md={6} className="text-center">
-          <p className="lead" ref={refShown}>{t('allCats')}</p>
+          <p className="lead" ref={refShown} data-testid="opposite-filter">{t('allCats')}</p>
         </Col>
         <Col xs={12} md={6} className="text-center align-items-center">
           <Button
@@ -50,6 +50,7 @@ const App = () => {
             className="filter-button btnBackg"
             onClick={handleClick}
             role="button"
+            data-testid="filter-button"
           >
             {t('chooseLikedCats')}
           </Button>

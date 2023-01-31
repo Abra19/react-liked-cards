@@ -19,16 +19,20 @@ const ModalOnRemove = () => {
     dispatch(closeModal());
   };
 
+  const handleClose = () => {
+    dispatch(closeModal());
+  };
+
   return (
-    <Modal show={isShown} centered>
+    <Modal show={isShown} centered data-testid="modal-for-delete">
       <Modal.Header closeButton>
-        <Modal.Title>{t('deleteQuestion')}</Modal.Title>
+        <Modal.Title data-testid="modal-title">{t('deleteQuestion')}</Modal.Title>
       </Modal.Header>
       <Modal.Footer>
-        <Button onClick={() => handleRemove(targetId)} variant="outline-danger">
+        <Button onClick={() => handleRemove(targetId)} variant="outline-danger" data-testid="modal-delete">
           {t('delete')}
         </Button>
-        <Button onClick={handleRemove} variant="outline-sucsess">
+        <Button onClick={handleClose} variant="outline-sucsess" data-testid="modal-close">
           {t('cancel')}
         </Button>
       </Modal.Footer>

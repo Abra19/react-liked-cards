@@ -11,13 +11,12 @@ const fetchData = createAsyncThunk(
       const imgResp = await axios.get(routes.imgPath());
       const texts = textResp.data.data;
       const imgs = imgResp.data;
-      const data = imgs.reduce((acc, img, i) => [...acc,
-        {
-          id: uniqueId(),
-          text: texts[i],
-          img,
-          isLiked: false,
-        }], []);
+      const data = imgs.reduce((acc, img, i) => [...acc, {
+        id: uniqueId(),
+        text: texts[i],
+        img,
+        isLiked: false,
+      }], []);
       return {
         data,
         err: 'sucsess',
